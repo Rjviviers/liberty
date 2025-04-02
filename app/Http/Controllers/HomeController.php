@@ -139,7 +139,7 @@ class HomeController extends Controller
             'heading' => 'Professional Biokinetics for Total Wellness',
             'subheading' => 'Restore Movement. Regain Life.',
             'description' => 'Danie de Villiers offers personalized biokinetic treatments to improve your movement, fitness, and quality of life. Experience the difference with evidence-based rehabilitation.',
-            'image' => 'https://liberty.test/assets/Danie%20De%20Villiers.png',
+            'image' => '/assets/Danie De Villiers.png',
             'button_text' => 'Book Appointment',
             'admin_button_text' => 'Admin Login'
         ];

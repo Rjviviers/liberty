@@ -13,6 +13,9 @@ import Footer from './components/Footer.vue';
 import BookingModal from './components/BookingModal.vue';
 import ThemeSelector from './components/ThemeSelector.vue';
 
+// Import Font Awesome
+import '@fortawesome/fontawesome-free/css/all.css';
+
 // Create Vue app with empty options object
 const app = createApp({});
 

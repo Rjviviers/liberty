@@ -71,26 +71,35 @@ const services = computed(() => [
 </script>
 
 <template>
-  <section id="services" class="py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="section-title">{{ content.title }}</h2>
+  <section id="services" class="py-12 md:py-16 lg:py-20">
+    <div class="container mx-auto px-6 md:px-8 lg:px-12 max-w-7xl">
+      <h2 class="fade-in gradient-text text-4xl sm:text-5xl lg:text-6xl font-extrabold text-center mb-6">
+        {{ content.title }}
+      </h2>
+      
+      <p class="text-center !text-center mx-auto text-text-light dark:text-gray-400 text-lg max-w-3xl mb-16">
+        Explore our specialized biokinetic services tailored to address your unique health and wellness needs.
+      </p>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-8">
         <div 
           v-for="service in services" 
           :key="service.id" 
-          class="service-card p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-2 animate-fade-in"
+          class="service-card rounded-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col"
         >
-          <div class="text-primary-color text-4xl mb-4">
-            <i :class="['fas', service.icon]"></i>
+          <div class="flex items-center justify-center mb-4">
+            <div class="icon-container relative flex items-center justify-center w-16 h-16 rounded-full">
+              <i :class="['fas', service.icon]" class="text-4xl text-primary-color z-10"></i>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-text-color">{{ service.title }}</h3>
-          <p class="service-text">{{ service.description }}</p>
+          <h3 class="text-xl font-bold mb-3 text-text-color dark:text-gray-200 text-center">{{ service.title }}</h3>
+          <p class="text-text-light dark:text-gray-400 text-center">{{ service.description }}</p>
         </div>
       </div>
       
       <div class="text-center mt-12">
-        <button class="bg-primary-color hover:bg-primary-dark text-white px-6 py-3 rounded-md transition duration-300">
+        <button class="bg-secondary-color hover:bg-secondary-dark text-white px-8 py-4 rounded-md transition duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-secondary-light focus:ring-offset-2 mx-auto">
+          <i class="fas fa-arrow-right mr-2"></i>
           {{ content.button_text }}
         </button>
       </div>
@@ -99,12 +108,68 @@ const services = computed(() => [
 </template>
 
 <style scoped>
-.service-card {
-  background-color: var(--bg-color);
-  border: 1px solid var(--border-color);
+.gradient-text {
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: 100%;
 }
 
-.service-text {
-  color: var(--text-light);
+.service-card {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+.service-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 
+              0 0 15px rgba(var(--primary-rgb), 0.1);
+}
+
+.icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--bg-light);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.icon-container::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-light);
+  border-radius: 50%;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  opacity: 0.1;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .icon-container {
+  transform: scale(1.1);
+}
+
+.service-card:hover .icon-container::after {
+  transform: scale(1.2);
+  opacity: 0.3;
 }
 </style> 

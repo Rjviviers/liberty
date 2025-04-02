@@ -79,7 +79,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Layout>
+  <Layout @open-booking="openBookingModal">
     <!-- Scroll to top button -->
     <div class="scroll-top" :class="{'visible': showScrollTop}" @click="scrollToTop">
       <i class="fas fa-arrow-up"></i>

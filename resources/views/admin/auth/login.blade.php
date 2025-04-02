@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin Login | {{ config('app.name') }}</title>
     
     <!-- Include Tailwind CSS -->
@@ -63,6 +64,13 @@
         <div class="mt-6 text-center">
             <a href="{{ url('/') }}" class="text-sm text-blue-600 hover:underline">Back to Website</a>
         </div>
+        
+        @if(config('app.debug'))
+        <div class="mt-6 p-3 bg-gray-100 rounded text-xs">
+            <p>Debug: CSRF Token: {{ csrf_token() }}</p>
+            <p>Session ID: {{ session()->getId() }}</p>
+        </div>
+        @endif
     </div>
 </body>
 </html> 

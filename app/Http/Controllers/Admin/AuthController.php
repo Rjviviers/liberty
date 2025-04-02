@@ -27,6 +27,9 @@ class AuthController extends Controller
         if ($request->username === $this->adminCredentials['username'] && 
             $request->password === $this->adminCredentials['password']) {
             
+            // Regenerate the session to ensure a fresh CSRF token
+            $request->session()->regenerate();
+            
             // Set admin session
             session(['admin_auth' => true]);
             session(['admin_username' => $request->username]);
@@ -41,6 +44,9 @@ class AuthController extends Controller
     {
         // Clear admin session
         $request->session()->forget(['admin_auth', 'admin_username']);
+        
+        // Regenerate the session to invalidate the old session
+        $request->session()->regenerate(true);
         
         return redirect()->route('admin.login')->with('success', 'Logged out successfully');
     }

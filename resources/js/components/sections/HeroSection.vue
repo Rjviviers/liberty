@@ -47,7 +47,7 @@ onMounted(() => {
 <template>
   <section 
     id="home" 
-    class="hero-container relative overflow-hidden"
+    class="hero-container relative overflow-hidden py-8 sm:py-12 md:py-16 lg:py-20"
   >
     <!-- Animated Background -->
     <div class="absolute inset-0 noise-bg bg-gradient-to-br from-gray-50/80 to-white dark:from-gray-900/90 dark:to-gray-800/90"></div>
@@ -61,33 +61,60 @@ onMounted(() => {
     <div class="absolute inset-0 z-0 grid-pattern opacity-10 dark:opacity-5"></div>
     
     <!-- Main Content -->
-    <div class="container relative z-10 mx-auto px-4 h-full flex items-center">
-      <div class="flex flex-col lg:flex-row items-center justify-between w-full gap-16">
+    <div class="container relative z-10 mx-auto px-4 sm:px-6 md:px-8 h-full flex items-center">
+      <div class="flex flex-col lg:flex-row items-center lg:items-stretch justify-between w-full gap-8 sm:gap-12 lg:gap-16 flex-row-section">
         <!-- Text Content -->
-        <div class="lg:w-1/2 space-y-8 text-center lg:text-left">
-          <div class="space-y-3">
-            <p class="fade-in glitch-text uppercase tracking-widest text-sm font-semibold text-secondary-color">
+        <div class="w-full lg:w-1/2 space-y-4 sm:space-y-6 md:space-y-8 text-center lg:text-left">
+          <div class="space-y-2 sm:space-y-3">
+            <p class="fade-in glitch-text uppercase tracking-widest text-xs sm:text-sm font-semibold text-secondary-color text-center lg:text-left">
               Professional Biokineticist
             </p>
             
-            <h1 class="fade-in hero-title text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight">
+            <h1 class="fade-in hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-center lg:text-left">
               <span class="block">{{ content.heading.split(' ')[0] }}</span>
               <span class="gradient-text">{{ content.heading.split(' ').slice(1).join(' ') }}</span>
             </h1>
             
-            <p class="fade-in text-xl font-medium text-gray-700 dark:text-gray-300 mt-4">
+            <p class="fade-in text-lg sm:text-xl font-medium text-gray-700 dark:text-gray-300 mt-2 sm:mt-4 text-center lg:text-left">
               {{ content.subheading }}
             </p>
           </div>
           
-          <p class="fade-in text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto lg:mx-0">
+          <!-- Image Container - Only on mobile (<640px) -->
+          <div class="fade-in block sm:hidden mt-6 mb-8 perspective-container mobile-hero-image rounded-lg overflow-hidden shadow-xl max-w-xs mx-auto w-full">
+            <div 
+              class="relative image-container"
+              :style="{
+                transform: 'none'
+              }"
+            >
+              <!-- Main image with special effects -->
+              <img 
+                :src="content.image" 
+                alt="Danie De Villiers - Professional Biokineticist" 
+                class="relative z-10 section-image w-full h-full object-cover"
+              >
+              
+              <!-- Layered glowing effects -->
+              <div class="absolute -inset-2 glow-effect"></div>
+              <div class="absolute -inset-1 blur-sm bg-gradient-to-tr from-primary-color/30 to-secondary-color/30 rounded-2xl z-0"></div>
+              
+              <!-- Digital frame elements -->
+              <div class="frame-corner top-left"></div>
+              <div class="frame-corner top-right"></div>
+              <div class="frame-corner bottom-left"></div>
+              <div class="frame-corner bottom-right"></div>
+            </div>
+          </div>
+          
+          <p class="fade-in text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
             {{ content.description }}
           </p>
           
-          <div class="fade-in flex flex-col sm:flex-row gap-5 pt-6">
+          <div class="fade-in flex flex-col sm:flex-row gap-4 sm:gap-5 pt-4 sm:pt-6 justify-center lg:justify-start">
             <button 
               @click="emit('open-booking')" 
-              class="button primary"
+              class="button primary w-full sm:w-auto"
             >
               <span>{{ content.button_text }}</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -95,7 +122,7 @@ onMounted(() => {
             
             <a 
               href="/admin/login" 
-              class="button secondary"
+              class="button secondary w-full sm:w-auto"
             >
               <span>{{ content.admin_button_text }}</span>
             </a>
@@ -105,19 +132,19 @@ onMounted(() => {
           <div class="hidden lg:block absolute -left-10 bottom-20 w-16 h-16 rotating-square"></div>
         </div>
         
-        <!-- Image Container -->
-        <div class="fade-in lg:w-1/2 perspective-container">
+        <!-- Image Container - For tablets and desktop (>=640px) -->
+        <div class="fade-in hidden sm:block lg:w-1/2 perspective-container section-image-container rounded-lg overflow-hidden shadow-xl max-w-md lg:max-w-none w-full">
           <div 
             class="relative image-container"
             :style="{
-              transform: `rotateY(${mousePosition.x * 5}deg) rotateX(${-mousePosition.y * 5}deg)`
+              transform: mousePosition ? `rotateY(${mousePosition.x * 5}deg) rotateX(${-mousePosition.y * 5}deg)` : 'none'
             }"
           >
             <!-- Main image with special effects -->
             <img 
               :src="content.image" 
               alt="Danie De Villiers - Professional Biokineticist" 
-              class="relative z-10 main-image"
+              class="relative z-10 section-image w-full h-full object-cover"
             >
             
             <!-- Layered glowing effects -->
@@ -142,7 +169,7 @@ onMounted(() => {
     </div>
 
     <!-- Scroll indicator -->
-    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+    <div class="absolute bottom-5 sm:bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
       <div class="scroll-arrow"></div>
     </div>
   </section>
@@ -150,9 +177,32 @@ onMounted(() => {
 
 <style scoped>
 .hero-container {
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
   width: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+@media (max-width: 640px) {
+  .hero-container {
+    min-height: auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  /* Make mobile image smaller */
+  .section-image-container {
+    min-height: 250px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .section-image-container {
+    min-height: 350px;
+  }
 }
 
 /* === Text styling === */
@@ -166,7 +216,6 @@ onMounted(() => {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  display: inline-block;
   position: relative;
 }
 
@@ -269,6 +318,27 @@ onMounted(() => {
 .perspective-container {
   perspective: 1000px;
   position: relative;
+  height: 100%;
+}
+
+.section-image-container {
+  position: relative;
+  height: auto;
+  width: 100%;
+  min-height: 300px;
+}
+
+@media (min-width: 640px) {
+  .section-image-container {
+    min-height: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-image-container {
+    height: 100%;
+    min-height: 450px;
+  }
 }
 
 .image-container {
@@ -277,12 +347,16 @@ onMounted(() => {
   transform-style: preserve-3d;
   border-radius: 16px;
   padding: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .main-image {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   transform: translateZ(20px);
   filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.1));
   transition: all 0.3s ease;
@@ -429,65 +503,69 @@ onMounted(() => {
   100% { transform: rotate(360deg); }
 }
 
-/* === Buttons === */
+/* === Button styling === */
 .button {
   position: relative;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 16px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   z-index: 1;
+  white-space: nowrap;
 }
 
-.button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: -1;
-}
-
-.button:hover::before {
-  width: 100%;
+@media (max-width: 640px) {
+  .button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
 }
 
 .button.primary {
-  background: var(--primary-color);
+  background-color: var(--primary-color);
   color: white;
-  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
 }
 
 .button.primary:hover {
-  box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.4);
-  transform: translateY(-2px);
-}
-
-.button.primary::before {
-  background: var(--secondary-color);
+  background-color: var(--primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .button.secondary {
-  background: transparent;
-  color: var(--primary-color);
+  background-color: transparent;
+  color: var(--text-color);
   border: 2px solid var(--primary-color);
-}
-
-.button.secondary:hover {
-  color: white;
-  transform: translateY(-2px);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 
 .button.secondary::before {
-  background: var(--primary-color);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--primary-light);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.button.secondary:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.button.secondary:hover::before {
+  width: 100%;
 }
 
 /* === Scroll Indicator === */
@@ -557,5 +635,22 @@ onMounted(() => {
 
 :root[data-theme="dark"] .scroll-arrow::before {
   background-color: var(--secondary-color);
+}
+
+.mobile-hero-image {
+  height: auto;
+  max-height: 300px;
+  width: 80%;
+  max-width: 300px;
+  min-height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 480px) {
+  .mobile-hero-image {
+    max-height: 250px;
+    min-height: 180px;
+  }
 }
 </style> 
