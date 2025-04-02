@@ -79,3 +79,7 @@ Thumbs.db
 *.min.*
 .env.testing
 .env.bak
+
+# Project-specific
+/danie-lara
+/previouswebinfo
