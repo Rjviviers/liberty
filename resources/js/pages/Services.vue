@@ -1,7 +1,35 @@
 <script setup lang="ts">
 import Layout from '@/layouts/DefaultLayout.vue';
 import BookingModal from '@/components/BookingModal.vue';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+
+// Define the props interface
+interface ServicesContent {
+  title: string;
+  button_text: string;
+  service1_title: string;
+  service1_description: string;
+  service1_icon: string;
+  service2_title: string;
+  service2_description: string;
+  service2_icon: string;
+  service3_title: string;
+  service3_description: string;
+  service3_icon: string;
+  service4_title: string;
+  service4_description: string;
+  service4_icon: string;
+  service5_title: string;
+  service5_description: string;
+  service5_icon: string;
+  service6_title: string;
+  service6_description: string;
+  service6_icon: string;
+}
+
+const props = defineProps<{
+  content: ServicesContent;
+}>();
 
 const bookingModalOpen = ref(false);
 
@@ -13,50 +41,51 @@ const closeBookingModal = () => {
   bookingModalOpen.value = false;
 };
 
-const services = [
+// Generate the services array from the content prop
+const services = computed(() => [
   {
     id: 1,
-    title: 'Primary Care',
-    description: 'Comprehensive healthcare services for patients of all ages, focusing on prevention, diagnosis, and treatment of common illnesses.',
-    icon: 'fa-user-md'
+    title: props.content.service1_title,
+    description: props.content.service1_description,
+    icon: props.content.service1_icon
   },
   {
     id: 2,
-    title: 'Specialized Treatments',
-    description: 'Advanced treatment options for complex conditions, utilizing the latest medical technologies and evidence-based approaches.',
-    icon: 'fa-stethoscope'
+    title: props.content.service2_title,
+    description: props.content.service2_description,
+    icon: props.content.service2_icon
   },
   {
     id: 3,
-    title: 'Wellness Programs',
-    description: 'Personalized wellness plans that promote healthy lifestyles, disease prevention, and overall wellbeing.',
-    icon: 'fa-heartbeat'
+    title: props.content.service3_title,
+    description: props.content.service3_description,
+    icon: props.content.service3_icon
   },
   {
     id: 4,
-    title: 'Diagnostic Services',
-    description: 'Comprehensive diagnostic testing to identify and assess medical conditions with accuracy and efficiency.',
-    icon: 'fa-microscope'
+    title: props.content.service4_title,
+    description: props.content.service4_description,
+    icon: props.content.service4_icon
   },
   {
     id: 5,
-    title: 'Rehabilitation',
-    description: 'Therapeutic services designed to help patients recover from injuries, surgeries, or illnesses and regain optimal function.',
-    icon: 'fa-walking'
+    title: props.content.service5_title,
+    description: props.content.service5_description,
+    icon: props.content.service5_icon
   },
   {
     id: 6,
-    title: 'Chronic Care Management',
-    description: 'Ongoing support and management strategies for patients living with chronic health conditions.',
-    icon: 'fa-chart-line'
+    title: props.content.service6_title,
+    description: props.content.service6_description,
+    icon: props.content.service6_icon
   }
-];
+]);
 </script>
 
 <template>
   <Layout>
     <div class="container mx-auto py-12 px-4">
-      <h1 class="text-4xl font-bold text-center mb-8">Our Services</h1>
+      <h1 class="text-4xl font-bold text-center mb-8">{{ content.title }}</h1>
       
       <p class="text-center max-w-3xl mx-auto mb-12">We offer a comprehensive range of healthcare services designed to meet your unique needs. Our team of experienced professionals is dedicated to providing personalized care with compassion and expertise.</p>
       
@@ -102,7 +131,7 @@ const services = [
           @click="openBookingModal"
           class="bg-primary-color hover:bg-primary-dark text-white px-6 py-3 rounded-md transition duration-300"
         >
-          Schedule a Service
+          {{ content.button_text }}
         </button>
       </div>
     </div>

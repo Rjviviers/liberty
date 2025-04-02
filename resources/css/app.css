@@ -10,22 +10,27 @@
   /* Default Theme (Classic) */
   --primary-color: #2563eb;
   --primary-dark: #1d4ed8;
-  --primary-light: #dbeafe;
-  --secondary-color: #f97316;
-  --secondary-dark: #ea580c;
-  --secondary-light: #ffedd5;
+  --primary-light: #3b82f6;
+  --secondary-color: #10b981;
+  --secondary-dark: #059669;
+  --secondary-light: #34d399;
   --bg-color: #ffffff;
-  --bg-light: #f8fafc;
-  --bg-dark: #e2e8f0;
-  --text-color: #1e293b;
-  --text-light: #64748b;
-  --border-color: #e2e8f0;
+  --bg-light: #f9fafb;
+  --bg-card: #ffffff;
+  --text-color: #1f2937;
+  --text-light: #6b7280;
+  --text-muted: #9ca3af;
+  --border-color: #e5e7eb;
   --success-color: #22c55e;
   --error-color: #ef4444;
   --warning-color: #f59e0b;
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --button-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --transition-normal: all 0.3s ease;
+  
+  /* RGB values for shadow effects */
+  --primary-rgb: 37, 99, 235;
+  --secondary-rgb: 16, 185, 129;
 }
 
 /* Theme Variations - Light Themes */
@@ -78,16 +83,17 @@ body.theme-earthdark {
 body.theme-dark-blue {
   --primary-color: #3b82f6;
   --primary-dark: #2563eb;
-  --primary-light: #93c5fd;
-  --secondary-color: #f97316;
-  --secondary-dark: #ea580c;
-  --secondary-light: #fdba74;
-  --bg-color: #0f172a;
-  --bg-light: #1e293b;
-  --bg-dark: #0f172a;
-  --text-color: #f8fafc;
-  --text-light: #cbd5e1;
-  --border-color: #334155;
+  --primary-light: #60a5fa;
+  --secondary-color: #10b981;
+  --secondary-dark: #059669;
+  --secondary-light: #34d399;
+  --bg-color: #1f2937;
+  --bg-light: #111827;
+  --bg-card: #374151;
+  --text-color: #f9fafb;
+  --text-light: #e5e7eb;
+  --text-muted: #d1d5db;
+  --border-color: #4b5563;
 }
 
 body.theme-dark-emerald {
@@ -129,9 +135,9 @@ body.theme-dark-violet {
 
 html {
   scroll-behavior: smooth;
-}
+    }
 
-body {
+    body {
   font-family: 'Montserrat', 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--text-color);
   line-height: 1.6;
@@ -599,4 +605,25 @@ footer {
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Dark theme */
+:root[data-theme="dark"] {
+  --primary-color: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #60a5fa;
+  --secondary-color: #10b981;
+  --secondary-dark: #059669;
+  --secondary-light: #34d399;
+  --bg-color: #1f2937;
+  --bg-light: #111827;
+  --bg-card: #374151;
+  --text-color: #f9fafb;
+  --text-light: #e5e7eb;
+  --text-muted: #d1d5db;
+  --border-color: #4b5563;
+  
+  /* RGB values for shadow effects */
+  --primary-rgb: 59, 130, 246;
+  --secondary-rgb: 16, 185, 129;
 }

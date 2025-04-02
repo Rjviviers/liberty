@@ -71,30 +71,28 @@ features[3].icon = content.feature4_icon;
 </script>
 
 <template>
-  <section id="features" class="py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="section-title">{{ content.title }}</h2>
+  <section class="features-section relative overflow-hidden py-16 md:py-24 lg:py-32">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 grid-pattern opacity-10 dark:opacity-5"></div>
+    <div class="blob blob-3"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <h2 class="fade-in gradient-text text-4xl sm:text-5xl lg:text-6xl font-extrabold text-center mb-16">
+        {{ content.title }}
+      </h2>
       
-      <div class="grid md:grid-cols-2 gap-8 mb-12">
-        <div>
-          <div 
-            v-for="feature in features" 
-            :key="feature.id" 
-            class="flex mb-8 animate-slide-right"
-          >
-            <div class="mr-4 text-primary-color text-3xl">
-              <i :class="['fas', feature.icon]"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold mb-2 text-text-color">{{ feature.title }}</h3>
-              <p class="text-text-light">{{ feature.description }}</p>
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div v-for="(feature, index) in features" :key="index" class="fade-in feature-card">
+          <div class="icon-container">
+            <i :class="['fas', feature.icon]" class="text-4xl"></i>
           </div>
+          <h3 class="text-xl font-bold mt-4">{{ feature.title }}</h3>
+          <p class="text-gray-600 dark:text-gray-400 mt-2">{{ feature.description }}</p>
         </div>
-        
-        <div class="rounded-lg overflow-hidden shadow-lg animate-slide-left">
-          <img :src="content.image" alt="Biokinetic Therapy" class="w-full h-full object-cover min-h-[300px]">
-        </div>
+      </div>
+      
+      <div class="rounded-lg overflow-hidden shadow-lg animate-slide-left">
+        <img :src="content.image" alt="Biokinetic Therapy" class="w-full h-full object-cover min-h-[300px]">
       </div>
       
       <div class="features-cta p-8 rounded-lg">

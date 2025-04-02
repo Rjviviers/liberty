@@ -1,62 +1,83 @@
 <script setup lang="ts">
-// No props or emits needed for this component
+interface AboutContent {
+  title: string;
+  subtitle: string;
+  paragraph1: string;
+  paragraph2: string;
+  image: string;
+  years_experience: string;
+  experience_text: string;
+  highlight1_title: string;
+  highlight1_icon: string;
+  highlight2_title: string;
+  highlight2_icon: string;
+  highlight3_title: string;
+  highlight3_icon: string;
+  highlight4_title: string;
+  highlight4_icon: string;
+}
+
+defineProps<{
+  content: AboutContent;
+}>();
 </script>
 
 <template>
-  <section id="about" class="py-16 bg-bg-light">
-    <div class="container mx-auto px-4">
-      <h2 class="section-title">About Danie de Villiers</h2>
-      
-      <div class="grid md:grid-cols-2 gap-8 items-center">
-        <div class="animate-slide-right">
-          <h3 class="text-2xl font-semibold mb-4 text-text-color">Dedicated to Your Well-being</h3>
-          <p class="mb-4 text-text-color">As a professional biokineticist, Danie de Villiers believes that everyone deserves personalized care that respects their unique needs and circumstances. For over 15 years, he's been providing exceptional biokinetic services to the community.</p>
-          <p class="mb-4 text-text-color">With extensive experience in exercise therapy, Danie is committed to offering comprehensive care that addresses both immediate concerns and long-term health goals. He combines medical expertise with a compassionate approach to ensure that every patient feels heard, supported, and empowered.</p>
+  <section class="about-section relative overflow-hidden py-16 md:py-24 lg:py-32">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 noise-bg bg-gradient-to-br from-gray-50/80 to-white dark:from-gray-900/90 dark:to-gray-800/90"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center gap-16">
+        <!-- Image Container -->
+        <div class="fade-in lg:w-1/2 perspective-container">
+          <div class="relative image-container">
+            <img :src="content.image" alt="About Us" class="relative z-10 main-image">
+            <div class="absolute -inset-2 glow-effect"></div>
+          </div>
+        </div>
+        
+        <!-- Text Content -->
+        <div class="fade-in lg:w-1/2 space-y-8">
+          <h2 class="gradient-text text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+            {{ content.title }}
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400">
+            {{ content.subtitle }}
+          </p>
+          <p class="text-lg text-gray-600 dark:text-gray-400">
+            {{ content.paragraph1 }}
+          </p>
+          <p class="text-lg text-gray-600 dark:text-gray-400">
+            {{ content.paragraph2 }}
+          </p>
           
           <div class="grid grid-cols-2 gap-4 mt-6">
             <div class="about-card p-4 rounded-lg shadow-sm text-center">
               <div class="text-primary-color text-3xl mb-2">
-                <i class="fas fa-user-md"></i>
+                <i :class="content.highlight1_icon"></i>
               </div>
-              <h4 class="font-semibold text-text-color">Expert Care</h4>
+              <h4 class="font-semibold text-text-color">{{ content.highlight1_title }}</h4>
             </div>
             <div class="about-card p-4 rounded-lg shadow-sm text-center">
               <div class="text-primary-color text-3xl mb-2">
-                <i class="fas fa-heartbeat"></i>
+                <i :class="content.highlight2_icon"></i>
               </div>
-              <h4 class="font-semibold text-text-color">Personalized Treatment</h4>
+              <h4 class="font-semibold text-text-color">{{ content.highlight2_title }}</h4>
             </div>
             <div class="about-card p-4 rounded-lg shadow-sm text-center">
               <div class="text-primary-color text-3xl mb-2">
-                <i class="fas fa-clinic-medical"></i>
+                <i :class="content.highlight3_icon"></i>
               </div>
-              <h4 class="font-semibold text-text-color">Modern Techniques</h4>
+              <h4 class="font-semibold text-text-color">{{ content.highlight3_title }}</h4>
             </div>
             <div class="about-card p-4 rounded-lg shadow-sm text-center">
               <div class="text-primary-color text-3xl mb-2">
-                <i class="fas fa-users"></i>
+                <i :class="content.highlight4_icon"></i>
               </div>
-              <h4 class="font-semibold text-text-color">Patient Community</h4>
-            </div>
-          </div>
-        </div>
-        
-        <div class="animate-slide-left">
-          <div class="relative">
-            <div class="bg-primary-color w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-lg">
-              <!-- Use Unsplash image -->
-              <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="About Danie de Villiers" class="w-full h-full object-cover">
-            </div>
-            <div class="about-badge p-6 rounded-lg shadow-lg max-w-xs mx-auto md:mx-0 md:absolute md:-bottom-10 md:-left-10">
-              <div class="flex items-center space-x-4">
-                <div class="text-secondary-color text-4xl">
-                  <i class="fas fa-award"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold text-lg text-text-color">15+ Years</h4>
-                  <p class="text-sm text-text-light">of excellence in biokinetics</p>
-                </div>
-              </div>
+              <h4 class="font-semibold text-text-color">{{ content.highlight4_title }}</h4>
             </div>
           </div>
         </div>

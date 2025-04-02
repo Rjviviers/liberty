@@ -4,15 +4,12 @@ import NavBar from '@/components/NavBar.vue';
 import Footer from '@/components/Footer.vue';
 import ThemeSelector from '@/components/ThemeSelector.vue';
 
-const bookingModalOpen = ref(false);
+const emit = defineEmits(['open-booking']);
 
 const handleOpenBooking = () => {
-  bookingModalOpen.value = true;
   // Emit this to the parent component
   emit('open-booking');
 };
-
-const emit = defineEmits(['open-booking']);
 </script>
 
 <template>

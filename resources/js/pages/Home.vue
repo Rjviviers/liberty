@@ -28,6 +28,7 @@ interface HeroContent {
 defineProps<{
   testimonials: Testimonial[];
   heroContent: HeroContent;
+  aboutContent: any; // Add about content
   featuresContent: any; // Add proper interface if needed
   servicesContent: any; // Add proper interface if needed
   testimonialsContent: any; // Add proper interface if needed
@@ -89,7 +90,7 @@ onMounted(() => {
       :content="heroContent"
       @open-booking="openBookingModal" 
     />
-    <AboutSection />
+    <AboutSection :content="aboutContent" />
     <ServicesSection :content="servicesContent" />
     <TestimonialsSection :testimonials="testimonials" :content="testimonialsContent" />
     <FeaturesSection :content="featuresContent" />

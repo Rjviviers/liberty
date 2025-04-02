@@ -31,40 +31,23 @@ const getAvatarUrl = (index: number) => {
 </script>
 
 <template>
-  <section id="testimonials" class="py-16 bg-bg-light">
-    <div class="container mx-auto px-4">
-      <h2 class="section-title">{{ content.title || 'What Our Patients Say' }}</h2>
+  <section class="testimonials-section relative overflow-hidden py-16 md:py-24 lg:py-32">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 noise-bg bg-gradient-to-br from-gray-50/80 to-white dark:from-gray-900/90 dark:to-gray-800/90"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <h2 class="fade-in gradient-text text-4xl sm:text-5xl lg:text-6xl font-extrabold text-center mb-16">
+        {{ content.heading }}
+      </h2>
       
-      <div v-if="testimonials && testimonials.length" class="grid md:grid-cols-3 gap-6">
-        <div 
-          v-for="(testimonial, index) in testimonials" 
-          :key="testimonial.id" 
-          class="testimonial-card p-6 rounded-lg shadow-md animate-fade-in"
-        >
-          <div class="mb-4 text-secondary-color">
-            <i class="fas fa-quote-left text-3xl"></i>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div v-for="(testimonial, index) in content.testimonials" :key="index" class="fade-in testimonial-card">
+          <div class="avatar-container">
+            <img :src="testimonial.avatar" :alt="testimonial.name" class="rounded-full">
           </div>
-          <p class="italic mb-6 testimonial-text">{{ testimonial.text }}</p>
-          <div class="flex items-center">
-            <div class="w-12 h-12 rounded-full mr-4 overflow-hidden">
-              <img :src="getAvatarUrl(index)" alt="Testimonial avatar" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <h4 class="font-semibold testimonial-name">{{ testimonial.name }}</h4>
-              <p class="text-sm testimonial-detail">{{ testimonial.detail }}</p>
-            </div>
-          </div>
+          <p class="text-gray-600 dark:text-gray-400 mt-4">{{ testimonial.text }}</p>
+          <p class="text-lg font-bold mt-4">{{ testimonial.name }}</p>
         </div>
-      </div>
-      
-      <div v-else class="text-center p-8 testimonial-card rounded-lg shadow-md">
-        <p class="testimonial-text">No testimonials available at the moment.</p>
-      </div>
-      
-      <div class="text-center mt-12">
-        <a href="#" class="text-primary-color hover:text-primary-dark underline">
-          {{ content.view_all_text }}
-        </a>
       </div>
     </div>
   </section>

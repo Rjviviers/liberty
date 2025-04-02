@@ -15,83 +15,28 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <footer class="bg-primary-color text-white py-16">
-    <div class="container mx-auto px-4">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3 class="text-xl font-semibold mb-4">{{ bioInfo.name }}</h3>
-          <p class="mb-3">Professional Biokineticist</p>
-          <p class="opacity-80 mb-4">Helping patients recover and achieve optimal physical performance.</p>
-          <div class="flex space-x-4 mt-4">
-            <a href="#" class="social-link">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </div>
+  <footer class="footer-section relative overflow-hidden py-16 md:py-24 lg:py-32">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 grid-pattern opacity-10 dark:opacity-5"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="fade-in">
+          <h3 class="gradient-text text-2xl font-bold">About Us</h3>
+          <p class="text-gray-600 dark:text-gray-400 mt-4">{{ content.about }}</p>
         </div>
-        
-        <div class="footer-column">
-          <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
-          <ul class="footer-links space-y-2">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <div class="fade-in">
+          <h3 class="gradient-text text-2xl font-bold">Quick Links</h3>
+          <ul class="mt-4">
+            <li v-for="(link, index) in content.links" :key="index">
+              <a :href="link.url" class="text-gray-600 dark:text-gray-400 hover:text-primary-color">{{ link.text }}</a>
+            </li>
           </ul>
         </div>
-        
-        <div class="footer-column">
-          <h3 class="text-xl font-semibold mb-4">Contact</h3>
-          <div class="contact-info space-y-3">
-            <div class="contact-item">
-              <i class="fas fa-phone"></i>
-              <span>{{ bioInfo.phone }}</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-envelope"></i>
-              <span>{{ bioInfo.email }}</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>{{ bioInfo.location }}</span>
-            </div>
-          </div>
+        <div class="fade-in">
+          <h3 class="gradient-text text-2xl font-bold">Contact Us</h3>
+          <p class="text-gray-600 dark:text-gray-400 mt-4">{{ content.contact }}</p>
         </div>
-        
-        <div class="footer-column">
-          <h3 class="text-xl font-semibold mb-4">Hours</h3>
-          <div class="hours-info space-y-3">
-            <div class="hours-item">
-              <span class="day">Monday - Friday:</span>
-              <span class="time">8:00 AM - 5:00 PM</span>
-            </div>
-            <div class="hours-item">
-              <span class="day">Saturday:</span>
-              <span class="time">9:00 AM - 1:00 PM</span>
-            </div>
-            <div class="hours-item">
-              <span class="day">Sunday:</span>
-              <span class="time">Closed</span>
-            </div>
-          </div>
-          
-          <button @click="emit('open-booking')" class="footer-button btn mt-6 w-full">
-            Book Appointment
-          </button>
-        </div>
-      </div>
-      
-      <div class="footer-copyright border-t border-white border-opacity-20 mt-12 pt-8 text-center">
-        <p>&copy; {{ currentYear }} {{ bioInfo.name }} | Biokinetics. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -178,5 +123,26 @@ const emit = defineEmits<{
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 2rem;
   }
+}
+
+/* Global Gradient Text */
+.gradient-text {
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Floating Elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Noise Background */
+.noise-bg {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.08;
+  mix-blend-mode: overlay;
 }
 </style> 

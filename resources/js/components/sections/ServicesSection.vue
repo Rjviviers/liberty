@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
 // Define the props interface
 interface ServicesContent {
   title: string;
@@ -23,74 +25,49 @@ interface ServicesContent {
   service6_icon: string;
 }
 
-defineProps<{
+const props = defineProps<{
   content: ServicesContent;
 }>();
 
 // Generate the services array from the content prop
-const services = [
+const services = computed(() => [
   {
     id: 1,
-    title: '',
-    description: '',
-    icon: ''
+    title: props.content.service1_title,
+    description: props.content.service1_description,
+    icon: props.content.service1_icon
   },
   {
     id: 2,
-    title: '',
-    description: '',
-    icon: ''
+    title: props.content.service2_title,
+    description: props.content.service2_description,
+    icon: props.content.service2_icon
   },
   {
     id: 3,
-    title: '',
-    description: '',
-    icon: ''
+    title: props.content.service3_title,
+    description: props.content.service3_description,
+    icon: props.content.service3_icon
   },
   {
     id: 4,
-    title: '',
-    description: '',
-    icon: ''
+    title: props.content.service4_title,
+    description: props.content.service4_description,
+    icon: props.content.service4_icon
   },
   {
     id: 5,
-    title: '',
-    description: '',
-    icon: ''
+    title: props.content.service5_title,
+    description: props.content.service5_description,
+    icon: props.content.service5_icon
   },
   {
     id: 6,
-    title: '',
-    description: '',
-    icon: ''
+    title: props.content.service6_title,
+    description: props.content.service6_description,
+    icon: props.content.service6_icon
   }
-];
-
-// Update the services array with the prop data
-services[0].title = content.service1_title;
-services[0].description = content.service1_description;
-services[0].icon = content.service1_icon;
-
-services[1].title = content.service2_title;
-services[1].description = content.service2_description;
-services[1].icon = content.service2_icon;
-
-services[2].title = content.service3_title;
-services[2].description = content.service3_description;
-services[2].icon = content.service3_icon;
-
-services[3].title = content.service4_title;
-services[3].description = content.service4_description;
-services[3].icon = content.service4_icon;
-
-services[4].title = content.service5_title;
-services[4].description = content.service5_description;
-services[4].icon = content.service5_icon;
-
-services[5].title = content.service6_title;
-services[5].description = content.service6_description;
-services[5].icon = content.service6_icon;
+]);
 </script>
 
 <template>

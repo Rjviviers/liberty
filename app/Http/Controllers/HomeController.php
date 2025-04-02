@@ -29,6 +29,9 @@ class HomeController extends Controller
         // Get hero section content from the database
         $heroContent = $this->getHeroContent();
         
+        // Get about section content from the database
+        $aboutContent = $this->getAboutContent();
+        
         // Get features section content from the database
         $featuresContent = $this->getFeaturesContent();
         
@@ -44,6 +47,7 @@ class HomeController extends Controller
         return view('home', [
             'testimonials' => $testimonials,
             'heroContent' => $heroContent,
+            'aboutContent' => $aboutContent,
             'featuresContent' => $featuresContent,
             'servicesContent' => $servicesContent,
             'testimonialsContent' => $testimonialsContent,
@@ -69,7 +73,12 @@ class HomeController extends Controller
      */
     public function services(): View
     {
-        return view('services');
+        // Get services section content from the database
+        $servicesContent = $this->getServicesContent();
+        
+        return view('services', [
+            'servicesContent' => $servicesContent
+        ]);
     }
 
     /**
