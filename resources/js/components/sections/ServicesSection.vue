@@ -1,50 +1,102 @@
 <script setup lang="ts">
-// No props or emits needed for this component
+// Define the props interface
+interface ServicesContent {
+  title: string;
+  button_text: string;
+  service1_title: string;
+  service1_description: string;
+  service1_icon: string;
+  service2_title: string;
+  service2_description: string;
+  service2_icon: string;
+  service3_title: string;
+  service3_description: string;
+  service3_icon: string;
+  service4_title: string;
+  service4_description: string;
+  service4_icon: string;
+  service5_title: string;
+  service5_description: string;
+  service5_icon: string;
+  service6_title: string;
+  service6_description: string;
+  service6_icon: string;
+}
 
+defineProps<{
+  content: ServicesContent;
+}>();
+
+// Generate the services array from the content prop
 const services = [
   {
     id: 1,
-    title: 'Rehabilitation',
-    description: 'Customized biokinetic rehabilitation for injuries, post-surgery recovery, and chronic conditions to restore optimal movement.',
-    icon: 'fa-walking'
+    title: '',
+    description: '',
+    icon: ''
   },
   {
     id: 2,
-    title: 'Sports Performance',
-    description: 'Specialized training programs to enhance athletic performance, prevent injuries, and optimize recovery for athletes.',
-    icon: 'fa-running'
+    title: '',
+    description: '',
+    icon: ''
   },
   {
     id: 3,
-    title: 'Chronic Disease Management',
-    description: 'Exercise therapy regimens for managing chronic conditions such as diabetes, hypertension, and cardiovascular disease.',
-    icon: 'fa-heartbeat'
+    title: '',
+    description: '',
+    icon: ''
   },
   {
     id: 4,
-    title: 'Postural Assessment',
-    description: 'Comprehensive analysis of body alignment and posture to identify imbalances and create corrective programs.',
-    icon: 'fa-user-check'
+    title: '',
+    description: '',
+    icon: ''
   },
   {
     id: 5,
-    title: 'Orthopedic Therapy',
-    description: 'Specialized treatment for musculoskeletal issues including joint pain, muscle strains, and mobility limitations.',
-    icon: 'fa-bone'
+    title: '',
+    description: '',
+    icon: ''
   },
   {
     id: 6,
-    title: 'Wellness Programs',
-    description: 'Personalized exercise plans focused on improving overall health, strength, flexibility, and quality of life.',
-    icon: 'fa-dumbbell'
+    title: '',
+    description: '',
+    icon: ''
   }
 ];
+
+// Update the services array with the prop data
+services[0].title = content.service1_title;
+services[0].description = content.service1_description;
+services[0].icon = content.service1_icon;
+
+services[1].title = content.service2_title;
+services[1].description = content.service2_description;
+services[1].icon = content.service2_icon;
+
+services[2].title = content.service3_title;
+services[2].description = content.service3_description;
+services[2].icon = content.service3_icon;
+
+services[3].title = content.service4_title;
+services[3].description = content.service4_description;
+services[3].icon = content.service4_icon;
+
+services[4].title = content.service5_title;
+services[4].description = content.service5_description;
+services[4].icon = content.service5_icon;
+
+services[5].title = content.service6_title;
+services[5].description = content.service6_description;
+services[5].icon = content.service6_icon;
 </script>
 
 <template>
   <section id="services" class="py-16">
     <div class="container mx-auto px-4">
-      <h2 class="section-title">Our Services</h2>
+      <h2 class="section-title">{{ content.title }}</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-8">
         <div 
@@ -62,7 +114,7 @@ const services = [
       
       <div class="text-center mt-12">
         <button class="bg-primary-color hover:bg-primary-dark text-white px-6 py-3 rounded-md transition duration-300">
-          View All Services
+          {{ content.button_text }}
         </button>
       </div>
     </div>

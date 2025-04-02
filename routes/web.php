@@ -42,6 +42,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('appointments', \App\Http\Controllers\Admin\AppointmentController::class);
         Route::patch('/appointments/{appointment}/status', [\App\Http\Controllers\Admin\AppointmentController::class, 'updateStatus'])->name('appointments.update-status');
         
+        // Testimonials management
+        Route::resource('testimonials', \App\Http\Controllers\Admin\TestimonialController::class);
+        
         // Website content management
         Route::prefix('website')->name('website.')->group(function () {
             // Hero section

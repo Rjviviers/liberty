@@ -101,11 +101,11 @@
                     <i class="fas fa-clipboard-list fa-fw mr-2"></i> Services Section
                 </a>
                 
-                <a href="{{ route('admin.website.testimonials.edit') }}" class="block px-4 py-3 {{ request()->routeIs('admin.website.testimonials.*') ? 'bg-gray-900' : 'hover:bg-gray-700' }} transition duration-200">
+                <a href="{{ route('admin.website.testimonials.edit') }}" class="block px-4 py-3 {{ request()->is('admin/website/testimonials*') ? 'bg-gray-900' : 'hover:bg-gray-700' }} transition duration-200">
                     <i class="fas fa-comment fa-fw mr-2"></i> Testimonials Section
                 </a>
                 
-                <a href="{{ route('admin.website.contact.edit') }}" class="block px-4 py-3 {{ request()->routeIs('admin.website.contact.*') ? 'bg-gray-900' : 'hover:bg-gray-700' }} transition duration-200">
+                <a href="{{ url('admin/website/contact') }}" class="block px-4 py-3 {{ request()->is('admin/website/contact*') ? 'bg-gray-900' : 'hover:bg-gray-700' }} transition duration-200">
                     <i class="fas fa-envelope fa-fw mr-2"></i> Contact Section
                 </a>
             </nav>

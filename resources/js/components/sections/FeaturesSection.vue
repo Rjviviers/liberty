@@ -1,38 +1,79 @@
 <script setup lang="ts">
-// No props or emits needed for this component
+// Define the props interface
+interface FeaturesContent {
+  title: string;
+  image: string;
+  cta_title: string;
+  cta_description: string;
+  cta_button_text: string;
+  feature1_title: string;
+  feature1_description: string;
+  feature1_icon: string;
+  feature2_title: string;
+  feature2_description: string;
+  feature2_icon: string;
+  feature3_title: string;
+  feature3_description: string;
+  feature3_icon: string;
+  feature4_title: string;
+  feature4_description: string;
+  feature4_icon: string;
+}
 
+defineProps<{
+  content: FeaturesContent;
+}>();
+
+// Generate the features array from the content prop
 const features = [
   {
     id: 1,
-    title: 'Patient-Centered Care',
-    description: 'Danie prioritizes your unique needs and preferences in every aspect of your biokinetic treatment plan.',
-    icon: 'fa-user-check'
+    title: '',
+    description: '',
+    icon: ''
   },
   {
     id: 2,
-    title: 'Advanced Techniques',
-    description: 'Using cutting-edge exercise therapy techniques and equipment for effective rehabilitation and performance enhancement.',
-    icon: 'fa-laptop-medical'
+    title: '',
+    description: '',
+    icon: ''
   },
   {
     id: 3,
-    title: 'Experienced Professional',
-    description: 'With over 15 years of experience, Danie brings specialized knowledge in biokinetics to your treatment.',
-    icon: 'fa-user-md'
+    title: '',
+    description: '',
+    icon: ''
   },
   {
     id: 4,
-    title: 'Holistic Approach',
-    description: 'Addressing all aspects of your movement and physical wellbeing, not just isolated symptoms or conditions.',
-    icon: 'fa-hospital-user'
+    title: '',
+    description: '',
+    icon: ''
   }
 ];
+
+// Update the features array with the prop data
+features[0].title = content.feature1_title;
+features[0].description = content.feature1_description;
+features[0].icon = content.feature1_icon;
+
+features[1].title = content.feature2_title;
+features[1].description = content.feature2_description;
+features[1].icon = content.feature2_icon;
+
+features[2].title = content.feature3_title;
+features[2].description = content.feature3_description;
+features[2].icon = content.feature3_icon;
+
+features[3].title = content.feature4_title;
+features[3].description = content.feature4_description;
+features[3].icon = content.feature4_icon;
 </script>
 
 <template>
   <section id="features" class="py-16">
     <div class="container mx-auto px-4">
-      <h2 class="section-title">Why Choose Danie de Villiers</h2>
+      <h2 class="section-title">{{ content.title }}</h2>
       
       <div class="grid md:grid-cols-2 gap-8 mb-12">
         <div>
@@ -52,16 +93,16 @@ const features = [
         </div>
         
         <div class="rounded-lg overflow-hidden shadow-lg animate-slide-left">
-          <img src="https://images.unsplash.com/photo-1522898467493-49726bf28798?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Biokinetic Therapy" class="w-full h-full object-cover min-h-[300px]">
+          <img :src="content.image" alt="Biokinetic Therapy" class="w-full h-full object-cover min-h-[300px]">
         </div>
       </div>
       
       <div class="features-cta p-8 rounded-lg">
         <div class="text-center">
-          <h3 class="text-2xl font-semibold mb-4 text-text-color">Ready to experience exceptional biokinetic care?</h3>
-          <p class="text-text-light mb-6">Schedule your consultation today and take the first step towards better movement and health.</p>
+          <h3 class="text-2xl font-semibold mb-4 text-text-color">{{ content.cta_title }}</h3>
+          <p class="text-text-light mb-6">{{ content.cta_description }}</p>
           <button class="bg-secondary-color hover:bg-secondary-dark text-white px-6 py-3 rounded-md transition duration-300">
-            Get Started
+            {{ content.cta_button_text }}
           </button>
         </div>
       </div>

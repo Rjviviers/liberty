@@ -19,6 +19,7 @@ class Testimonial extends Model
         'detail',
         'text',
         'is_approved',
+        'status',
     ];
 
     /**
@@ -38,5 +39,27 @@ class Testimonial extends Model
     public function scopeApproved($query)
     {
         return $query->where('is_approved', true);
+    }
+
+    /**
+     * Get the status attribute.
+     * Maps the is_approved boolean to a status string
+     */
+    public function getStatusAttribute()
+    {
+        if (array_key_exists('status', $this->attributes)) {
+            return $this->attributes['status'];
+        }
+        return $this->is_approved ? 'approved' : 'pending';
+    }
+
+    /**
+     * Set the status attribute.
+     * Maps the status string to is_approved boolean
+     */
+    public function setStatusAttribute($value)
+    {
+        $this->attributes['status'] = $value;
+        $this->attributes['is_approved'] = ($value === 'approved');
     }
 }

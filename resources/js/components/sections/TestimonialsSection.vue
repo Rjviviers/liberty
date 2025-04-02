@@ -6,24 +6,36 @@ interface Testimonial {
   text: string;
 }
 
-// Add avatar URLs for testimonials
-const avatarUrls = [
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80",
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
-];
+interface TestimonialsContent {
+  title: string;
+  view_all_text: string;
+  avatar1: string;
+  avatar2: string;
+  avatar3: string;
+}
 
-defineProps<{
+const props = defineProps<{
   testimonials: Testimonial[];
+  content: TestimonialsContent;
 }>();
+
+// Get avatar URLs from the content props
+const getAvatarUrl = (index: number) => {
+  const avatars = [
+    props.content.avatar1,
+    props.content.avatar2,
+    props.content.avatar3
+  ];
+  return avatars[index % avatars.length] || '';
+};
 </script>
 
 <template>
   <section id="testimonials" class="py-16 bg-bg-light">
     <div class="container mx-auto px-4">
-      <h2 class="section-title">What Our Patients Say</h2>
+      <h2 class="section-title">{{ content.title || 'What Our Patients Say' }}</h2>
       
-      <div v-if="testimonials.length" class="grid md:grid-cols-3 gap-6">
+      <div v-if="testimonials && testimonials.length" class="grid md:grid-cols-3 gap-6">
         <div 
           v-for="(testimonial, index) in testimonials" 
           :key="testimonial.id" 
@@ -35,7 +47,7 @@ defineProps<{
           <p class="italic mb-6 testimonial-text">{{ testimonial.text }}</p>
           <div class="flex items-center">
             <div class="w-12 h-12 rounded-full mr-4 overflow-hidden">
-              <img :src="avatarUrls[index % 3]" alt="Testimonial avatar" class="w-full h-full object-cover">
+              <img :src="getAvatarUrl(index)" alt="Testimonial avatar" class="w-full h-full object-cover">
             </div>
             <div>
               <h4 class="font-semibold testimonial-name">{{ testimonial.name }}</h4>
@@ -51,7 +63,7 @@ defineProps<{
       
       <div class="text-center mt-12">
         <a href="#" class="text-primary-color hover:text-primary-dark underline">
-          View All Testimonials
+          {{ content.view_all_text }}
         </a>
       </div>
     </div>
@@ -60,8 +72,8 @@ defineProps<{
 
 <style scoped>
 .testimonial-card {
-  background-color: var(--bg-color);
-  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-color);
 }
 
 .testimonial-text {
@@ -73,6 +85,6 @@ defineProps<{
 }
 
 .testimonial-detail {
-  color: var(--text-light);
+  color: var(--text-muted);
 }
 </style> 

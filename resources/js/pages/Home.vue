@@ -28,6 +28,10 @@ interface HeroContent {
 defineProps<{
   testimonials: Testimonial[];
   heroContent: HeroContent;
+  featuresContent: any; // Add proper interface if needed
+  servicesContent: any; // Add proper interface if needed
+  testimonialsContent: any; // Add proper interface if needed
+  contactContent: any; // Add proper interface if needed
 }>();
 
 const bookingModalOpen = ref(false);
@@ -86,10 +90,10 @@ onMounted(() => {
       @open-booking="openBookingModal" 
     />
     <AboutSection />
-    <ServicesSection />
-    <TestimonialsSection :testimonials="testimonials" />
-    <FeaturesSection />
-    <ContactSection @open-booking="openBookingModal" />
+    <ServicesSection :content="servicesContent" />
+    <TestimonialsSection :testimonials="testimonials" :content="testimonialsContent" />
+    <FeaturesSection :content="featuresContent" />
+    <ContactSection :content="contactContent" @open-booking="openBookingModal" />
 
     <!-- Booking Modal -->
     <BookingModal 
