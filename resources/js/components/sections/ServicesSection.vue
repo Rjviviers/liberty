@@ -4,39 +4,39 @@
 const services = [
   {
     id: 1,
-    title: 'Primary Care',
-    description: 'Comprehensive healthcare services for patients of all ages, focusing on prevention, diagnosis, and treatment of common illnesses.',
-    icon: 'fa-user-md'
+    title: 'Rehabilitation',
+    description: 'Customized biokinetic rehabilitation for injuries, post-surgery recovery, and chronic conditions to restore optimal movement.',
+    icon: 'fa-walking'
   },
   {
     id: 2,
-    title: 'Specialized Treatments',
-    description: 'Advanced treatment options for complex conditions, utilizing the latest medical technologies and evidence-based approaches.',
-    icon: 'fa-stethoscope'
+    title: 'Sports Performance',
+    description: 'Specialized training programs to enhance athletic performance, prevent injuries, and optimize recovery for athletes.',
+    icon: 'fa-running'
   },
   {
     id: 3,
-    title: 'Wellness Programs',
-    description: 'Personalized wellness plans that promote healthy lifestyles, disease prevention, and overall wellbeing.',
+    title: 'Chronic Disease Management',
+    description: 'Exercise therapy regimens for managing chronic conditions such as diabetes, hypertension, and cardiovascular disease.',
     icon: 'fa-heartbeat'
   },
   {
     id: 4,
-    title: 'Diagnostic Services',
-    description: 'Comprehensive diagnostic testing to identify and assess medical conditions with accuracy and efficiency.',
-    icon: 'fa-microscope'
+    title: 'Postural Assessment',
+    description: 'Comprehensive analysis of body alignment and posture to identify imbalances and create corrective programs.',
+    icon: 'fa-user-check'
   },
   {
     id: 5,
-    title: 'Rehabilitation',
-    description: 'Therapeutic services designed to help patients recover from injuries, surgeries, or illnesses and regain optimal function.',
-    icon: 'fa-walking'
+    title: 'Orthopedic Therapy',
+    description: 'Specialized treatment for musculoskeletal issues including joint pain, muscle strains, and mobility limitations.',
+    icon: 'fa-bone'
   },
   {
     id: 6,
-    title: 'Chronic Care Management',
-    description: 'Ongoing support and management strategies for patients living with chronic health conditions.',
-    icon: 'fa-chart-line'
+    title: 'Wellness Programs',
+    description: 'Personalized exercise plans focused on improving overall health, strength, flexibility, and quality of life.',
+    icon: 'fa-dumbbell'
   }
 ];
 </script>
@@ -50,13 +50,13 @@ const services = [
         <div 
           v-for="service in services" 
           :key="service.id" 
-          class="bg-white p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-2 animate-fade-in"
+          class="service-card p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-2 animate-fade-in"
         >
           <div class="text-primary-color text-4xl mb-4">
             <i :class="['fas', service.icon]"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-3">{{ service.title }}</h3>
-          <p class="text-gray-600">{{ service.description }}</p>
+          <h3 class="text-xl font-semibold mb-3 text-text-color">{{ service.title }}</h3>
+          <p class="service-text">{{ service.description }}</p>
         </div>
       </div>
       
@@ -67,4 +67,15 @@ const services = [
       </div>
     </div>
   </section>
-</template> 
+</template>
+
+<style scoped>
+.service-card {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+}
+
+.service-text {
+  color: var(--text-light);
+}
+</style> 

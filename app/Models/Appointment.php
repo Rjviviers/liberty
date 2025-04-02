@@ -16,22 +16,24 @@ class Appointment extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'patient_id',
-        'appointment_date',
-        'appointment_type',
+        'name',
+        'email',
+        'phone',
+        'date',
+        'time',
+        'service',
+        'message',
         'status',
-        'notes',
     ];
 
     /**
      * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
-        'appointment_date' => 'datetime',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
+        'date' => 'date',
+        'time' => 'datetime:H:i',
     ];
 
     /**

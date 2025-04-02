@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import NavBar from '@/components/NavBar.vue';
 import Footer from '@/components/Footer.vue';
+import ThemeSelector from '@/components/ThemeSelector.vue';
 
 const bookingModalOpen = ref(false);
 
@@ -23,5 +24,6 @@ const emit = defineEmits(['open-booking']);
     </main>
     
     <Footer @open-booking="handleOpenBooking" />
+    <ThemeSelector />
   </div>
 </template> 

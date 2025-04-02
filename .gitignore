@@ -77,3 +77,5 @@ Thumbs.db
 # Compiled files
 *.compiled
 *.min.*
+.env.testing
+.env.bak

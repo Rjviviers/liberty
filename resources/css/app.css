@@ -355,49 +355,49 @@ section {
 /* Color dots for each theme */
 .theme-classic .color-preview .primary { background-color: #2563eb; }
 .theme-classic .color-preview .secondary { background-color: #f97316; }
-.theme-classic .color-preview .bg { background-color: #ffffff; }
-.theme-classic .color-preview .light { background-color: #f8fafc; }
+.theme-classic .color-preview .bg { background-color: #ffffff; border: 1px solid #e2e8f0; }
+.theme-classic .color-preview .light { background-color: #f8fafc; border: 1px solid #e2e8f0; }
 
 .theme-ocean .color-preview .primary { background-color: #0ea5e9; }
 .theme-ocean .color-preview .secondary { background-color: #06b6d4; }
-.theme-ocean .color-preview .bg { background-color: #ffffff; }
-.theme-ocean .color-preview .light { background-color: #e0f2fe; }
+.theme-ocean .color-preview .bg { background-color: #ffffff; border: 1px solid #e2e8f0; }
+.theme-ocean .color-preview .light { background-color: #e0f2fe; border: 1px solid #e2e8f0; }
 
 .theme-forest .color-preview .primary { background-color: #16a34a; }
 .theme-forest .color-preview .secondary { background-color: #84cc16; }
-.theme-forest .color-preview .bg { background-color: #ffffff; }
-.theme-forest .color-preview .light { background-color: #dcfce7; }
+.theme-forest .color-preview .bg { background-color: #ffffff; border: 1px solid #e2e8f0; }
+.theme-forest .color-preview .light { background-color: #dcfce7; border: 1px solid #e2e8f0; }
 
 .theme-midnight .color-preview .primary { background-color: #8b5cf6; }
 .theme-midnight .color-preview .secondary { background-color: #a855f7; }
-.theme-midnight .color-preview .bg { background-color: #ffffff; }
-.theme-midnight .color-preview .light { background-color: #f3e8ff; }
+.theme-midnight .color-preview .bg { background-color: #ffffff; border: 1px solid #e2e8f0; }
+.theme-midnight .color-preview .light { background-color: #f3e8ff; border: 1px solid #e2e8f0; }
 
 .theme-gothic .color-preview .primary { background-color: #d946ef; }
 .theme-gothic .color-preview .secondary { background-color: #ec4899; }
-.theme-gothic .color-preview .bg { background-color: #ffffff; }
-.theme-gothic .color-preview .light { background-color: #fae8ff; }
+.theme-gothic .color-preview .bg { background-color: #ffffff; border: 1px solid #e2e8f0; }
+.theme-gothic .color-preview .light { background-color: #fae8ff; border: 1px solid #e2e8f0; }
 
 .theme-earthdark .color-preview .primary { background-color: #78716c; }
 .theme-earthdark .color-preview .secondary { background-color: #f97316; }
-.theme-earthdark .color-preview .bg { background-color: #ffffff; }
-.theme-earthdark .color-preview .light { background-color: #f5f5f4; }
+.theme-earthdark .color-preview .bg { background-color: #ffffff; border: 1px solid #e2e8f0; }
+.theme-earthdark .color-preview .light { background-color: #f5f5f4; border: 1px solid #e2e8f0; }
 
 /* Dark theme color dots */
 .theme-dark-blue .color-preview .primary { background-color: #3b82f6; }
 .theme-dark-blue .color-preview .secondary { background-color: #f97316; }
-.theme-dark-blue .color-preview .bg { background-color: #0f172a; }
-.theme-dark-blue .color-preview .light { background-color: #1e293b; }
+.theme-dark-blue .color-preview .bg { background-color: #0f172a; border: 1px solid #334155; }
+.theme-dark-blue .color-preview .light { background-color: #1e293b; border: 1px solid #334155; }
 
 .theme-dark-emerald .color-preview .primary { background-color: #10b981; }
 .theme-dark-emerald .color-preview .secondary { background-color: #f59e0b; }
-.theme-dark-emerald .color-preview .bg { background-color: #0f172a; }
-.theme-dark-emerald .color-preview .light { background-color: #1e293b; }
+.theme-dark-emerald .color-preview .bg { background-color: #0f172a; border: 1px solid #334155; }
+.theme-dark-emerald .color-preview .light { background-color: #1e293b; border: 1px solid #334155; }
 
 .theme-dark-violet .color-preview .primary { background-color: #8b5cf6; }
 .theme-dark-violet .color-preview .secondary { background-color: #ec4899; }
-.theme-dark-violet .color-preview .bg { background-color: #18181b; }
-.theme-dark-violet .color-preview .light { background-color: #27272a; }
+.theme-dark-violet .color-preview .bg { background-color: #18181b; border: 1px solid #3f3f46; }
+.theme-dark-violet .color-preview .light { background-color: #27272a; border: 1px solid #3f3f46; }
 
 /* Scroll to top button */
 .scroll-top {

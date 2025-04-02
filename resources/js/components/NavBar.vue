@@ -53,6 +53,7 @@ onUnmounted(() => {
             <li><a href="#services" class="nav-link">Services</a></li>
             <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="/admin/login" class="nav-link">Admin</a></li>
           </ul>
           
           <button @click="emit('open-booking')" class="btn btn-primary ml-4 hidden md:block">
@@ -79,6 +80,7 @@ onUnmounted(() => {
         <li class="py-2"><a href="#services" @click="closeMenu" class="block">Services</a></li>
         <li class="py-2"><a href="#testimonials" @click="closeMenu" class="block">Testimonials</a></li>
         <li class="py-2"><a href="#contact" @click="closeMenu" class="block">Contact</a></li>
+        <li class="py-2"><a href="/admin/login" @click="closeMenu" class="block">Admin</a></li>
         <li class="pt-4">
           <button @click="emit('open-booking'); closeMenu();" class="btn btn-primary w-full">
             Book Appointment

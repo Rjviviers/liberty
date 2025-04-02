@@ -84,7 +84,7 @@ const emit = defineEmits<{
             </div>
           </div>
           
-          <button @click="emit('open-booking')" class="btn mt-6 bg-white text-primary-color hover:bg-opacity-90 w-full">
+          <button @click="emit('open-booking')" class="footer-button btn mt-6 w-full">
             Book Appointment
           </button>
         </div>
@@ -154,6 +154,19 @@ const emit = defineEmits<{
 .social-link:hover {
   background-color: var(--secondary-color);
   transform: translateY(-3px);
+}
+
+.footer-button {
+  background-color: var(--secondary-color);
+  color: white;
+  font-weight: 600;
+  border: 2px solid white;
+  transition: var(--transition-normal);
+}
+
+.footer-button:hover {
+  background-color: var(--secondary-dark);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {

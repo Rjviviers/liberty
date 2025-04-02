@@ -11,6 +11,7 @@ import ContactComponent from './pages/Contact.vue';
 import NavBar from './components/NavBar.vue';
 import Footer from './components/Footer.vue';
 import BookingModal from './components/BookingModal.vue';
+import ThemeSelector from './components/ThemeSelector.vue';
 
 // Create Vue app with empty options object
 const app = createApp({});
@@ -23,6 +24,7 @@ app.component('contact-component', ContactComponent);
 app.component('nav-bar', NavBar);
 app.component('footer-component', Footer);
 app.component('booking-modal', BookingModal);
+app.component('theme-selector', ThemeSelector);
 
 // Mount the app when document is ready
 document.addEventListener('DOMContentLoaded', () => {

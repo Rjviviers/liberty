@@ -45,8 +45,8 @@ const features = [
               <i :class="['fas', feature.icon]"></i>
             </div>
             <div>
-              <h3 class="text-xl font-semibold mb-2">{{ feature.title }}</h3>
-              <p class="text-gray-600">{{ feature.description }}</p>
+              <h3 class="text-xl font-semibold mb-2 text-text-color">{{ feature.title }}</h3>
+              <p class="text-text-light">{{ feature.description }}</p>
             </div>
           </div>
         </div>
@@ -56,10 +56,10 @@ const features = [
         </div>
       </div>
       
-      <div class="bg-secondary-light p-8 rounded-lg">
+      <div class="features-cta p-8 rounded-lg">
         <div class="text-center">
-          <h3 class="text-2xl font-semibold mb-4">Ready to experience exceptional biokinetic care?</h3>
-          <p class="text-gray-600 mb-6">Schedule your consultation today and take the first step towards better movement and health.</p>
+          <h3 class="text-2xl font-semibold mb-4 text-text-color">Ready to experience exceptional biokinetic care?</h3>
+          <p class="text-text-light mb-6">Schedule your consultation today and take the first step towards better movement and health.</p>
           <button class="bg-secondary-color hover:bg-secondary-dark text-white px-6 py-3 rounded-md transition duration-300">
             Get Started
           </button>
@@ -67,4 +67,22 @@ const features = [
       </div>
     </div>
   </section>
-</template> 
+</template>
+
+<style scoped>
+.features-cta {
+  background-color: var(--secondary-light);
+  color: var(--text-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  .features-cta {
+    background-color: var(--bg-light);
+  }
+}
+
+body[class*="theme-dark"] .features-cta {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-color);
+}
+</style> 

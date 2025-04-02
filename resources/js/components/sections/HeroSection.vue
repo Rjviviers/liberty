@@ -1,29 +1,53 @@
 <script setup lang="ts">
+interface HeroContent {
+  heading: string;
+  subheading: string;
+  description: string;
+  image: string;
+  button_text: string;
+  admin_button_text: string;
+}
+
+defineProps<{
+  content: HeroContent;
+}>();
+
 const emit = defineEmits<{
   (e: 'open-booking'): void;
 }>();
 </script>
 
 <template>
-  <section id="home" class="hero">
-    <div class="container mx-auto">
-      <div class="hero-container grid md:grid-cols-2 gap-8 items-center">
-        <div class="hero-content animate-slide-right">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-primary-color">Specialized Exercise Therapy</h1>
-          <h2 class="text-2xl font-medium mb-6 text-secondary-color">Restore Movement. Regain Life.</h2>
-          <p class="mb-8 text-gray-700">Professional biokinetics services for rehabilitation, chronic disease management, and sports performance optimization. Let me help you achieve optimal physical function and improve your quality of life through evidence-based exercise therapy.</p>
-          <div class="flex flex-wrap gap-4">
-            <button @click="$emit('open-booking')" class="btn btn-primary">
-              Book a Consultation
-            </button>
-            <a href="#services" class="btn btn-outline">
-              Our Services
-            </a>
-          </div>
+  <section id="home" class="relative py-20 md:py-32 overflow-hidden bg-gray-50 dark:bg-gray-900">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <!-- Text content -->
+      <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          {{ content.heading }}
+        </h1>
+        <p class="text-xl font-medium text-gray-700 dark:text-gray-300 mb-4">
+          {{ content.subheading }}
+        </p>
+        <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">
+          {{ content.description }}
+        </p>
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
+          <button @click="emit('open-booking')" class="btn btn-primary">
+            {{ content.button_text }}
+          </button>
+          <a href="/admin/login" class="btn btn-outline">
+            {{ content.admin_button_text }}
+          </a>
         </div>
-        <div class="hero-image animate-slide-left">
-          <img src="https://liberty.test/assets/Danie%20De%20Villiers.png" alt="Danie de Villiers - Professional Biokineticist">
-        </div>
+      </div>
+      
+      <!-- Image -->
+      <div class="md:w-1/2">
+        <img 
+          :src="content.image" 
+          alt="Danie De Villiers - Professional Biokineticist" 
+          class="w-full h-auto mx-auto rounded"
+        >
       </div>
     </div>
   </section>
