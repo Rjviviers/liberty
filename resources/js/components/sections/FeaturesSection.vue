@@ -52,7 +52,7 @@ const features = [
         </div>
         
         <div class="rounded-lg overflow-hidden shadow-lg animate-slide-left">
-          <img src="https://images.unsplash.com/photo-1637777277435-3dda7427a610?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Biokinetic Therapy" class="w-full h-full object-cover min-h-[300px]">
+          <img src="https://images.unsplash.com/photo-1522898467493-49726bf28798?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Biokinetic Therapy" class="w-full h-full object-cover min-h-[300px]">
         </div>
       </div>
       
