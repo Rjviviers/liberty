@@ -1,24 +1,79 @@
-/.phpunit.cache
-/bootstrap/ssr
+# Laravel specific
 /node_modules
-/public/build
 /public/hot
 /public/storage
+/public/build
 /storage/*.key
-/storage/pail
 /vendor
 .env
 .env.backup
 .env.production
-.phpactor.json
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
+auth.json
 npm-debug.log
 yarn-error.log
-/auth.json
 /.fleet
 /.idea
-/.nova
 /.vscode
-/.zed
+
+# Vue.js / Node.js specific
+.DS_Store
+/dist
+.cache/
+.parcel-cache/
+.nuxt/
+.next/
+.out/
+dist/
+storybook-static/
+.svelte-kit/
+.output/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local development SSL certificates
+*.pem
+*.key
+*.crt
+
+# OS generated files
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Testing
+/coverage/
+.nyc_output
+.phpunit.cache
+
+# Database
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Compiled files
+*.compiled
+*.min.*
