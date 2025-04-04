@@ -54,10 +54,24 @@ echo "🔑 Generating application key..."
 docker exec -it liberty-app php artisan key:generate --no-interaction
 echo "✅ Application key generated successfully."
 
-# Run database migrations
+# Prepare and run database migrations
+echo "🗄️ Preparing database migrations..."
+docker exec -it liberty-app bash -c "chmod +x /var/www/docker/prepare-migrations.sh && /var/www/docker/prepare-migrations.sh"
+echo "✅ Migration preparation completed successfully."
+
+# Test migrations before running them
+echo "🚨 Testing migrations..."
+docker exec -it liberty-app bash -c "chmod +x /var/www/docker/test-migrations.sh && /var/www/docker/test-migrations.sh"
+echo "✅ Migration test completed successfully."
+
 echo "🗄️ Running database migrations..."
 docker exec -it liberty-app php artisan migrate --force
 echo "✅ Database migrations completed successfully."
+
+# Seed the database with initial data
+echo "🌱 Seeding the database with initial data..."
+docker exec -it liberty-app php artisan db:seed
+echo "✅ Database seeding completed successfully."
 
 # Create storage link
 echo "🔗 Creating storage link..."
