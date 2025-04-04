@@ -30,8 +30,8 @@ services:
     container_name: liberty-webserver
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"  # For SSL
+      - "${HTTP_PORT:-5412}:80"
+      - "${HTTPS_PORT:-443}:443"  # For SSL
     volumes:
       - ./:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/

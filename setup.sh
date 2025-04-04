@@ -105,4 +105,4 @@ docker exec -it liberty-node sh -c "npm install && npm run build"
 echo "✅ Frontend assets built successfully."
 
 echo "🎉 Liberty application has been successfully set up!"
-echo "📱 You can access the application at: http://localhost"
+echo "📱 You can access the application at: http://localhost:5412"

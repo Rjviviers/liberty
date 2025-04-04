@@ -1,10 +1,14 @@
 # Liberty - Laravel & Vue.js Application
 
-## Docker Deployment Instructions
+## Deployment Instructions
+
+You can deploy this application either using Docker or directly on your machine without Docker.
+
+### Docker Deployment
 
 This application is configured for easy deployment using Docker. Follow these steps to get started:
 
-### Prerequisites
+#### Prerequisites
 
 - Docker and Docker Compose installed on your machine
 - Git (to clone the repository)
@@ -18,9 +22,13 @@ For the easiest setup experience, use our automated setup script:
 chmod +x setup.sh
 ./setup.sh
 
-# On Windows:
+# On Windows with WSL/Git Bash:
 # Make sure the script is executable and run:
 bash setup.sh
+
+# On Windows without WSL (using PowerShell):
+# Double-click setup-windows.bat or run:
+.\setup-windows.bat
 ```
 
 This script will:
@@ -89,6 +97,38 @@ If you prefer to set up manually, follow these steps:
    - Frontend: [http://localhost](http://localhost)
    - Vite dev server: [http://localhost:5173](http://localhost:5173) (only in development mode)
 
+### Windows-Specific Setup
+
+For Windows users without WSL, we provide a dedicated Windows setup:
+
+1. **Prerequisites**:
+   - Install [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
+   - Make sure Docker Desktop is running before starting the setup
+
+2. **Quick Setup**:
+   - Double-click `setup-windows.bat` or run it from PowerShell
+   - The script will automatically configure everything for Windows
+
+3. **Manual Commands** (using PowerShell):
+   ```powershell
+   # Start containers
+   .\docker-compose-windows.bat up -d
+
+   # Stop containers
+   .\docker-compose-windows.bat down
+
+   # View logs
+   .\docker-compose-windows.bat logs
+
+   # Execute commands in containers
+   .\docker-compose-windows.bat exec app php artisan migrate
+   ```
+
+4. **Troubleshooting**:
+   - If you encounter permission issues, make sure Docker Desktop has access to your drive
+   - For file sharing issues, check Docker Desktop settings → Resources → File sharing
+   - For performance issues, adjust memory allocation in Docker Desktop settings
+
 ### Port Configuration
 
 By default, the application uses the following ports:
@@ -109,6 +149,7 @@ If any of these ports are already in use on your system, the setup script will d
 To manually change ports before installation:
 
 ```bash
+# On Linux/Mac/WSL:
 # Edit the port configuration file
 nano docker/ports.conf
 
@@ -117,6 +158,18 @@ bash docker/update-ports.sh
 
 # Then run the setup script
 bash setup.sh
+```
+
+```powershell
+# On Windows (PowerShell):
+# Edit the port configuration file
+notepad docker\ports.conf
+
+# Update Docker Compose files with the new ports
+powershell -ExecutionPolicy Bypass -File .\docker\update-ports.ps1
+
+# Then run the setup script
+.\setup-windows.bat
 ```
 
 ### Common Docker Commands
@@ -141,7 +194,52 @@ For production deployments, consider the following:
 
 ## Development
 
-For local development without Docker, refer to the standard Laravel development procedures in the Laravel documentation.
+### Running Without Docker
+
+If you prefer to run the application directly on your Windows machine without Docker, we provide a simple script to set up and start the necessary services.
+
+#### Non-Docker Prerequisites
+
+- PHP 8.2 or higher installed and in your PATH
+- Composer installed and in your PATH
+- Node.js 20 or higher installed and in your PATH
+- MySQL installed and running
+- Git (to clone the repository)
+
+#### Quick Start
+
+1. **Start the application:**
+
+   Simply double-click the `start-liberty.bat` file or run:
+
+   ```powershell
+   .\start-liberty.bat
+   ```
+
+   This script will:
+   - Check for required software
+   - Set up the environment
+   - Install dependencies
+   - Create the database if needed
+   - Run migrations
+   - Start the PHP development server on port 5412
+   - Start the Vite development server for frontend assets
+
+2. **Access the application:**
+
+   Once the script completes, you can access the application at:
+   - Main application: [http://localhost:5412](http://localhost:5412)
+   - Vite dev server: [http://localhost:5173](http://localhost:5173)
+
+3. **Stop the application:**
+
+   When you're done, you can stop the servers by:
+   - Pressing Ctrl+C in the terminal window
+   - Or running the stop script:
+
+   ```powershell
+   .\stop-liberty.bat
+   ```
 
 ## License
 
