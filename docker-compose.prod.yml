@@ -21,6 +21,8 @@ services:
     environment:
       - PHP_MEMORY_LIMIT=1G
       - PHP_MAX_EXECUTION_TIME=600
+      - APP_ENV=production
+      - APP_DEBUG=false
 
   # Nginx Service
   webserver:
@@ -29,9 +31,11 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+      - "443:443"  # For SSL
     volumes:
       - ./:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./docker/nginx/ssl/:/etc/nginx/ssl/  # For SSL certificates
     networks:
       - liberty-network
     depends_on:
@@ -52,7 +56,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_USER: ${DB_USERNAME}
-      SERVICE_TAGS: dev
+      SERVICE_TAGS: prod
       SERVICE_NAME: mysql
     ports:
       - "3306:3306"
@@ -67,26 +71,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # Node Service for frontend development
-  node:
-    image: node:20-alpine
-    container_name: liberty-node
-    working_dir: /var/www
-    volumes:
-      - ./:/var/www
-      - node_modules:/var/www/node_modules
-    command: sh -c "npm install && npm run dev"
-    ports:
-      - "5173:5173"
-    networks:
-      - liberty-network
-    depends_on:
-      - app
-    environment:
-      - NODE_ENV=development
-      - VITE_HOST=0.0.0.0
-      - VITE_PORT=5173
-
 # Networks
 networks:
   liberty-network:
@@ -95,6 +79,4 @@ networks:
 # Volumes
 volumes:
   liberty-db-data:
-    driver: local
-  node_modules:
     driver: local

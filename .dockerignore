@@ -1,21 +1,48 @@
-/node_modules
-/vendor
+# Version control
 /.git
-/.idea
-/.vscode
-/.env.*.local
-/.env.local
-/storage/app/*
-/storage/framework/cache/*
-/storage/framework/sessions/*
-/storage/framework/views/*
-/storage/logs/*
-/public/hot
-/public/storage
-/docker-compose*.yml
-/docker/volumes
-/tests
 /.gitattributes
 /.gitignore
+
+# Development environments
+/.idea
+/.vscode
 /.editorconfig
-/README.md 
+
+# Dependencies (will be installed in container)
+/node_modules
+/vendor
+
+# Environment files
+/.env
+/.env.*
+!/.env.example
+!/.env.docker
+
+# Docker files (not needed inside container)
+/docker-compose*.yml
+/docker/volumes
+
+# Tests
+/tests
+/phpunit.xml
+
+# Documentation
+/README.md
+/LICENSE
+
+# Keep storage directory structure but ignore contents
+/storage/app/*
+!/storage/app/.gitignore
+!/storage/app/public/.gitignore
+/storage/framework/cache/*
+!/storage/framework/cache/.gitignore
+/storage/framework/sessions/*
+!/storage/framework/sessions/.gitignore
+/storage/framework/views/*
+!/storage/framework/views/.gitignore
+/storage/logs/*
+!/storage/logs/.gitignore
+
+# Public storage symlink
+/public/hot
+/public/storage
