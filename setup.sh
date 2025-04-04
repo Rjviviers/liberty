@@ -35,6 +35,27 @@ chmod -R 775 storage
 chmod -R 775 bootstrap/cache
 echo "✅ Permissions set successfully."
 
+# Check if required ports are available
+echo "🔌 Checking if required ports are available..."
+
+# Detect OS and use appropriate port checking script
+if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
+    # Windows - use PowerShell script
+    powershell.exe -ExecutionPolicy Bypass -File "./docker/check-ports.ps1"
+    if [ $? -ne 0 ]; then
+        echo "❌ Setup aborted due to port conflicts."
+        exit 1
+    fi
+else
+    # Linux/Mac - use Bash script
+    chmod +x docker/check-ports.sh
+    ./docker/check-ports.sh
+    if [ $? -ne 0 ]; then
+        echo "❌ Setup aborted due to port conflicts."
+        exit 1
+    fi
+fi
+
 # Start Docker containers
 echo "🐳 Starting Docker containers..."
 docker-compose up -d

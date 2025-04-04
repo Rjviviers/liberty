@@ -89,6 +89,36 @@ If you prefer to set up manually, follow these steps:
    - Frontend: [http://localhost](http://localhost)
    - Vite dev server: [http://localhost:5173](http://localhost:5173) (only in development mode)
 
+### Port Configuration
+
+By default, the application uses the following ports:
+
+- HTTP: 80 (Nginx)
+- HTTPS: 443 (Nginx, for production)
+- MySQL: 3306
+- Vite dev server: 5173
+- PHP-FPM: 9000 (internal)
+
+If any of these ports are already in use on your system, the setup script will detect this and offer options to:
+
+1. **Automatically update ports** - The script will find available ports and update the configuration
+2. **Manually edit configuration** - You can edit the ports yourself
+3. **Continue anyway** - Not recommended as services may fail to start
+4. **Abort setup** - Cancel the installation
+
+To manually change ports before installation:
+
+```bash
+# Edit the port configuration file
+nano docker/ports.conf
+
+# Update Docker Compose files with the new ports
+bash docker/update-ports.sh
+
+# Then run the setup script
+bash setup.sh
+```
+
 ### Common Docker Commands
 
 - Start containers: `docker-compose up -d`
